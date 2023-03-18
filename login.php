@@ -1,5 +1,6 @@
 <?php    
-    session_start();
+    $redis = new Redis();
+    $redis->connect("localhost",6379);
     $servername="localhost";
     $username="root";
     $dbpassword="";
@@ -32,7 +33,9 @@
     else{
         echo "profile.html";
     }
-    $_SESSION['mailid']=$mailid;
+    if($redis){
+        $redis->set("mailid",$mailid);
+    }
     // header('Access-Control-Allow-Origin: register.html');
     // echo "Login Successfull";
     // $prepstats->execute();

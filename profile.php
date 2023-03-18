@@ -1,6 +1,7 @@
 <?php
-    session_start();
-    $mail=$_SESSION['mailid'];
+    $redis = new Redis();
+    $redis->connect("localhost",6379);
+    $mail=$redis->get('mailid');
     // echo $mail;
     $filter=['_id'=>"$mail"];
     $option=[];
@@ -10,4 +11,5 @@
     foreach($res as $row){
         echo(json_encode($row));
     } 
+    $redis->delete($redis->keys("*"));
 ?>

@@ -10,7 +10,7 @@ $(document).ready(function(){
             console.log(data);
             data=JSON.parse(data);
             console.log(data);
-            $("#name").text(data.name);
+            $("#username").text(data.name);
             $("#password").text(data.password);
             $("#mailid").text(data._id);
             $("#phnumber").text(data.phnumber);
